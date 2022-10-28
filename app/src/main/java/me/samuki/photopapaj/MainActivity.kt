@@ -1,67 +1,30 @@
-@file:OptIn(ExperimentalPermissionsApi::class)
-
 package me.samuki.photopapaj
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import me.samuki.photopapaj.gps.ui.GpsPermissionRequester
+import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
+import me.samuki.navigation.AppNavigation
+import me.samuki.navigation.destinations.Destination
 import me.samuki.photopapaj.ui.theme.PhotoPapajTheme
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var destinations: Set<@JvmSuppressWildcards Destination>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
+            val navController = rememberNavController()
+
             PhotoPapajTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting()
-                }
+                destinations.first().BuildDestination(navigation = AppNavigation(navController))
             }
         }
-    }
-}
-
-@Composable
-fun Greeting() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        GpsPermissionRequester(
-            Granted = {
-                Text(text = "Teraz już mam")
-            },
-            Denied = { requestPermissions ->
-                Button(onClick = { requestPermissions() }) {
-                    Text(text = "Poproś")
-                }
-            }
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    PhotoPapajTheme {
-        Greeting()
     }
 }

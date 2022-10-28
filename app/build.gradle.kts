@@ -2,6 +2,7 @@ plugins {
     id("me.samuki.application")
     id("me.samuki.application.compose")
     id("me.samuki.hilt")
+    id("me.samuki.hilt.compose")
 }
 
 android {

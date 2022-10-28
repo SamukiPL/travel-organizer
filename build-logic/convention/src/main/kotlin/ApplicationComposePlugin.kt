@@ -14,7 +14,7 @@ class ApplicationComposePlugin : Plugin<Project> {
             }
 
             dependencies {
-                implementation("androidx.activity:activity-compose:1.5.1")
+                implementation("androidx.activity:activity-compose:1.6.1")
             }
         }
     }

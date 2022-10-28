@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_welcome_title">Start your journey</string>
+    <string name="onboarding_welcome_desc">Every journey starts with desire to discover. Lose yourself in beauty of our world.</string>
+
+    <string name="onboarding_collaborate_title">Travel with friends</string>
+    <string name="onboarding_collaborate_desc">Create with your friends and travel with them. Gather fun and epic memories of time spend with them.</string>
+
+    <string name="onboarding_create_title">Plan with ease</string>
+    <string name="onboarding_create_desc">Begin planning inside our simple app. Only one click separates you from journey of your dreams.</string>
+    <string name="onboarding_create_button">Create new plan</string>
+</resources>

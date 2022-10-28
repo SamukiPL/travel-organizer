@@ -1,4 +1,5 @@
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import me.samuki.buildlogic.utils.configureFlavors
 import me.samuki.buildlogic.utils.configureKotlinAndroid
 import me.samuki.buildlogic.utils.implementation
 import org.gradle.api.Plugin
@@ -18,6 +19,10 @@ class ApplicationPlugin : Plugin<Project> {
             extensions.configure<BaseAppModuleExtension> {
                 configureKotlinAndroid(this)
                 compileSdk = 33
+                configureFlavors(this)
+                defaultConfig {
+                    targetSdk = 33
+                }
             }
 
             configureAppDependencies()

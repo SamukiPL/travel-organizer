@@ -29,8 +29,9 @@
             <option value="$PROJECT_DIR$/core/common" />
             <option value="$PROJECT_DIR$/core/data" />
             <option value="$PROJECT_DIR$/core/domain" />
-            <option value="$PROJECT_DIR$/core/gps" />
+            <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/core/presentation" />
+            <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/dashboard" />
             <option value="$PROJECT_DIR$/features/dashboard/data" />
@@ -40,6 +41,8 @@
             <option value="$PROJECT_DIR$/features/newStamp/data" />
             <option value="$PROJECT_DIR$/features/newStamp/domain" />
             <option value="$PROJECT_DIR$/features/newStamp/presentation" />
+            <option value="$PROJECT_DIR$/features/onboarding" />
+            <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>
       </GradleProjectSettings>
