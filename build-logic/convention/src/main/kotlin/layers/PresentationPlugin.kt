@@ -23,6 +23,7 @@ class PresentationPlugin : Plugin<Project> {
 
             dependencies {
                 implementation(rootProject.project("core:presentation"))
+                implementation(rootProject.project("core:ui"))
             }
             implementDomainLayer()
         }

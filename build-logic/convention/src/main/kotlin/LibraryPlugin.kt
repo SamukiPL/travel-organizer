@@ -1,4 +1,5 @@
 import com.android.build.gradle.LibraryExtension
+import me.samuki.buildlogic.utils.configureFlavors
 import me.samuki.buildlogic.utils.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -20,6 +21,7 @@ class LibraryPlugin : Plugin<Project> {
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFile("consumer-rules.pro")
                 }
+                configureFlavors(this)
             }
         }
     }

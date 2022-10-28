@@ -2,9 +2,7 @@ package me.samuki.buildlogic.utils
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
 
 fun Project.configureCompose(
     commonExtension: CommonExtension<*, *, *, *>
@@ -15,10 +13,11 @@ fun Project.configureCompose(
     }
 
     dependencies {
-        implementation("androidx.compose.ui:ui:1.2.1")
-        implementation("androidx.compose.ui:ui-tooling-preview:1.2.1")
-        implementation("androidx.compose.material:material:1.2.1")
-        debugImplementation("androidx.compose.ui:ui-tooling:1.2.1")
-        debugImplementation("androidx.compose.ui:ui-test-manifest:1.2.1")
+        implementation("androidx.compose.ui:ui:1.3.0")
+        implementation("androidx.compose.ui:ui-tooling-preview:1.3.0")
+        implementation("androidx.compose.material:material:1.3.0")
+        implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+        debugImplementation("androidx.compose.ui:ui-tooling:1.3.0")
+        debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.0")
     }
 }
