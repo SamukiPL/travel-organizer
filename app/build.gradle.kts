@@ -7,7 +7,7 @@ plugins {
 
 android {
     defaultConfig {
-        applicationId = "me.samuki.photopapaj"
+        applicationId = "me.samuki.travel"
         versionCode = 1
         versionName = "1.0"
 
@@ -33,4 +33,5 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.core:core-splashscreen:1.0.0")
 }
