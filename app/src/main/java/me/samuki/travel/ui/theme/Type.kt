@@ -1,4 +1,4 @@
-package me.samuki.photopapaj.ui.theme
+package me.samuki.travel.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

@@ -2,7 +2,7 @@ package me.samuki.onboarding
 
 import androidx.annotation.StringRes
 
-enum class OnBoardingPage(val animation: String, @StringRes val title: Int, @StringRes val description: Int) {
+internal enum class OnBoardingPage(val animation: String, @StringRes val title: Int, @StringRes val description: Int) {
     Welcome(
         animation = "animations/first_step.json",
         title = R.string.onboarding_welcome_title,

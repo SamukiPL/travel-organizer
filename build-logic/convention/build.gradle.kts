@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "me.samuki.photopapaj.buildlogic"
+group = "me.samuki.travel.buildlogic"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
