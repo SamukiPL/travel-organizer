@@ -1,6 +1,8 @@
+import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import me.samuki.buildlogic.utils.configureFlavors
 import me.samuki.buildlogic.utils.configureKotlinAndroid
+import me.samuki.buildlogic.utils.ignoreVariants
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -22,6 +24,10 @@ class LibraryPlugin : Plugin<Project> {
                     consumerProguardFile("consumer-rules.pro")
                 }
                 configureFlavors(this)
+            }
+
+            extensions.configure<LibraryAndroidComponentsExtension> {
+                ignoreVariants(this)
             }
         }
     }

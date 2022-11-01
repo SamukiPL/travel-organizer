@@ -49,7 +49,7 @@ private fun OnBoardingContent(
                     colors = listOf(
                         MaterialTheme.colors.primary,
                         MaterialTheme.colors.primaryVariant,
-                    ), endY = 1400F
+                    )
                 )
             ), horizontalAlignment = Alignment.CenterHorizontally
     ) {

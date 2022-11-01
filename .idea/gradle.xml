@@ -37,10 +37,14 @@
             <option value="$PROJECT_DIR$/features/dashboard/data" />
             <option value="$PROJECT_DIR$/features/dashboard/domain" />
             <option value="$PROJECT_DIR$/features/dashboard/presentation" />
-            <option value="$PROJECT_DIR$/features/newStamp" />
-            <option value="$PROJECT_DIR$/features/newStamp/data" />
-            <option value="$PROJECT_DIR$/features/newStamp/domain" />
-            <option value="$PROJECT_DIR$/features/newStamp/presentation" />
+            <option value="$PROJECT_DIR$/features/journeyDetails" />
+            <option value="$PROJECT_DIR$/features/journeyDetails/data" />
+            <option value="$PROJECT_DIR$/features/journeyDetails/domain" />
+            <option value="$PROJECT_DIR$/features/journeyDetails/presentation" />
+            <option value="$PROJECT_DIR$/features/journeyName" />
+            <option value="$PROJECT_DIR$/features/journeyName/data" />
+            <option value="$PROJECT_DIR$/features/journeyName/domain" />
+            <option value="$PROJECT_DIR$/features/journeyName/presentation" />
             <option value="$PROJECT_DIR$/features/onboarding" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>
