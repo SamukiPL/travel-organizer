@@ -1,6 +1,8 @@
+import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import me.samuki.buildlogic.utils.configureFlavors
 import me.samuki.buildlogic.utils.configureKotlinAndroid
+import me.samuki.buildlogic.utils.ignoreVariants
 import me.samuki.buildlogic.utils.implementation
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -23,6 +25,10 @@ class ApplicationPlugin : Plugin<Project> {
                 defaultConfig {
                     targetSdk = 33
                 }
+            }
+
+            extensions.configure<ApplicationAndroidComponentsExtension> {
+                ignoreVariants(this)
             }
 
             configureAppDependencies()

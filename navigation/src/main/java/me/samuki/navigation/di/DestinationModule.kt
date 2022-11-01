@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
 import me.samuki.navigation.destinations.Destination
+import me.samuki.navigation.destinations.JourneyDetails
 import me.samuki.navigation.destinations.OnBoarding
 
 @Module
@@ -14,4 +15,8 @@ internal abstract class DestinationModule {
     @Binds
     @IntoSet
     abstract fun onBoarding(onBoarding: OnBoarding): Destination
+
+    @Binds
+    @IntoSet
+    abstract fun journeyDetails(journeyDetails: JourneyDetails): Destination
 }

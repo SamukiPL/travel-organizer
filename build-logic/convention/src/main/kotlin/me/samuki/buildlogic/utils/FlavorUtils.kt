@@ -3,6 +3,7 @@ package me.samuki.buildlogic.utils
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.ApplicationProductFlavor
 import com.android.build.api.dsl.CommonExtension
+import com.android.build.api.variant.AndroidComponentsExtension
 
 enum class Dimension {
     environment
@@ -29,6 +30,16 @@ fun configureFlavors(
                     }
                 }
             }
+        }
+    }
+}
+
+fun ignoreVariants(
+    extension: AndroidComponentsExtension<*, *, *>
+) {
+    extension.apply {
+        beforeVariants {
+            it.enable = it.buildType != "release" || it.flavorName != Flavor.mock.name
         }
     }
 }
