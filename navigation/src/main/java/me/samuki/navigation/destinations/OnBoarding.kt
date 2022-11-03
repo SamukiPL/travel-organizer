@@ -8,12 +8,16 @@ import javax.inject.Inject
 
 internal class OnBoarding @Inject constructor() : Destination {
     override val routeName: String
-        get() = "onboarding"
+        get() = route
     override val arguments: List<NamedNavArgument>
         get() = emptyList()
 
     @Composable
     override fun BuildDestination(navigation: AppNavigation) {
         OnBoardingScreen(navigation)
+    }
+
+    companion object {
+        const val route = "onboarding"
     }
 }
