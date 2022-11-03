@@ -19,5 +19,7 @@ fun Project.configureCompose(
         implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
         debugImplementation("androidx.compose.ui:ui-tooling:1.3.0")
         debugImplementation("androidx.compose.ui:ui-test-manifest:1.3.0")
+
+        implementation("com.github.SamukiPL:composable-event:1.0.0")
     }
 }

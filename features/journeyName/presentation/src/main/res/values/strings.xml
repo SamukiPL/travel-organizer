@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="new_journey_name_title">New journey</string>
+    <string name="new_journey_name_description">Find some fun name for your next journey!</string>
+    <string name="new_journey_name_button">Start planning</string>
+
+    <string name="edit_journey_name_title">New name</string>
+    <string name="edit_journey_name_description">Did you just had an idea for better name?</string>
+    <string name="edit_journey_name_button">Change name</string>
+</resources>

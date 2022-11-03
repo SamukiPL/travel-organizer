@@ -15,6 +15,7 @@ class DataPlugin : Plugin<Project> {
                 apply(LibraryPlugin::class.java)
                 apply(FeaturePlugin::class.java)
                 apply(HiltPlugin::class.java)
+                apply("kotlinx-serialization")
             }
 
             dependencies {
