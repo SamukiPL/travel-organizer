@@ -3,19 +3,18 @@ package me.samuki.navigation.graph
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import me.samuki.navigation.AppNavigation
-import me.samuki.navigation.destinations.Destination
+import me.samuki.navigation.destinations.JourneyDetails
 
 @Composable
-fun GraphBuilder(destinations: Set<Destination>) {
-    val navController = rememberNavController()
+fun GraphBuilder(graphState: GraphState) {
+    val navController = graphState.navController
     val appNavigation = AppNavigation(navController)
 
-    NavHost(navController = navController, startDestination = "onboarding") {
-        destinations.forEach { destination ->
+    NavHost(navController = navController, startDestination = JourneyDetails.route) {
+        graphState.destinations.forEach { destination ->
             composable(destination.routeName, arguments = destination.arguments) {
-                destination.BuildDestination(navigation = appNavigation)
+                destination.BuildDestination(navigation = appNavigation, graphState.title::value::set)
             }
         }
     }

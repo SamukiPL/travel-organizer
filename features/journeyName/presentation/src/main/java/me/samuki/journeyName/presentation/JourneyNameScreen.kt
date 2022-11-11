@@ -1,9 +1,21 @@
 package me.samuki.journeyName.presentation
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -11,23 +23,30 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun JourneyNameScreen(navigation: JourneyNameNavigation) {
+fun JourneyNameScreen(navigation: JourneyNameNavigation): String {
     val viewModel: JourneyNameViewModel = hiltViewModel()
     LaunchedEffect(Unit) {
-        viewModel.initState(navigation.getJourneyNameIdArgument(), navigation.getJourneyNameNameArgument())
+        viewModel.initState(
+            navigation.getJourneyNameIdArgument(),
+            navigation.getJourneyNameNameArgument()
+        )
     }
 
     viewModel.successEvent {
         navigation.goToDetails(it)
     }
 
-    val state = viewModel.viewState.value
+    val state by remember {
+        viewModel.viewState
+    }
     JourneyNameContent(
         state.type,
         state.name,
         viewModel::changeName,
         viewModel::takeAction
     )
+
+    return stringResource(id = state.type.title)
 }
 
 @Composable
@@ -67,11 +86,6 @@ private fun DescriptionWithTextField(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ) {
-        Text(
-            text = stringResource(id = type.title).uppercase(),
-            modifier = Modifier.padding(start = 16.dp, top = 24.dp),
-            style = MaterialTheme.typography.h4
-        )
         Text(
             text = stringResource(id = type.description),
             modifier = Modifier.padding(start = 16.dp, top = 8.dp),
