@@ -4,32 +4,37 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
-import me.samuki.journeyDetails.presentation.JourneyDetailsScreen
+import me.samuki.journeyName.presentation.JourneyNameScreen
 import me.samuki.navigation.AppNavigation
-import java.util.UUID
 import javax.inject.Inject
 
-internal class JourneyDetails @Inject constructor() : Destination {
+class EditJourneyName @Inject constructor() : Destination {
     override val routeName: String
         get() = route
     override val arguments: List<NamedNavArgument>
         get() = listOf(
             navArgument(idArgument) {
                 type = NavType.StringType
-                defaultValue = UUID.randomUUID().toString()
+                nullable = true
+            },
+            navArgument(nameArgument) {
+                type = NavType.StringType
+                nullable = true
             }
         )
 
     @Composable
     override fun BuildDestination(navigation: AppNavigation, screenTitle: (String?) -> Unit) {
-        screenTitle(JourneyDetailsScreen(journeyDetailsNavigation = navigation))
+        screenTitle(JourneyNameScreen(navigation = navigation))
     }
 
     companion object {
-        private const val journeyDetails = "journeyDetails"
+        private const val editJourneyName = "editJourneyName"
         const val idArgument = "id"
-        const val route = "$journeyDetails?$idArgument={$idArgument}"
+        const val nameArgument = "name"
+        const val route = "$editJourneyName?$idArgument={$idArgument}&$nameArgument={$nameArgument}"
 
-        fun createRoute(id: String) = "$journeyDetails?$idArgument=$id"
+        fun createEditRoute(id: String? = null, name: String? = null) =
+            "$editJourneyName?$idArgument=$id&$nameArgument=$name"
     }
 }

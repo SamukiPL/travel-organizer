@@ -9,5 +9,5 @@ interface Destination {
     val arguments: List<NamedNavArgument>
 
     @Composable
-    fun BuildDestination(navigation: AppNavigation)
+    fun BuildDestination(navigation: AppNavigation, screenTitle: (String?) -> Unit)
 }

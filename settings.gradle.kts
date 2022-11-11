@@ -16,7 +16,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Photo Papaj"
+rootProject.name = "Travel"
 include(":app")
 include(":core:common")
 include(":core:data")

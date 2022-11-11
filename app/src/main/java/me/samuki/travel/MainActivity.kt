@@ -7,8 +7,10 @@ import androidx.compose.material.Scaffold
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import me.samuki.core.ui.TravelTopBar
 import me.samuki.navigation.destinations.Destination
 import me.samuki.navigation.graph.GraphBuilder
+import me.samuki.navigation.graph.rememberGraphState
 import me.samuki.travel.ui.theme.TravelTheme
 import javax.inject.Inject
 
@@ -23,11 +25,23 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val navController = rememberNavController()
+            val graphState = rememberGraphState(
+                navController = navController,
+                destinations = destinations
+            )
 
             TravelTheme {
-                // A surface container using the 'background' color from the theme
-                Scaffold {
-                    GraphBuilder(destinations = destinations)
+                Scaffold(
+                    topBar = {
+                        TravelTopBar(
+                            title = graphState.title.value.orEmpty(),
+                            shouldShowBackButton = graphState.shouldShowBackButton
+                        ) {
+
+                        }
+                    }
+                ) {
+                    GraphBuilder(graphState)
                 }
             }
         }
