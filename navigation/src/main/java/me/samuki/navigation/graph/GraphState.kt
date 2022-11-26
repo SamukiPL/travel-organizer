@@ -1,6 +1,7 @@
 package me.samuki.navigation.graph
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.navigation.NavDestination
@@ -18,6 +19,7 @@ fun rememberGraphState(
     }
 }
 
+@Stable
 class GraphState(
     val navController: NavHostController,
     val destinations: Set<Destination>

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="journey_details_title">Awesome Journey</string>
+
+    <string name="empty_journey_title">It\'s time to add first stage!</string>
+    <string name="empty_journey_description">Gather links with roads and places to stay. Create simple timeline and share all details with friends. Plan better vacations including your friends feedback.\nStart by creating first stage of your plan.</string>
 </resources>

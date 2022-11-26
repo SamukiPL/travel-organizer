@@ -25,4 +25,8 @@ internal abstract class DestinationModule {
     @Binds
     @IntoSet
     abstract fun journeyDetails(journeyDetails: JourneyDetails): Destination
+
+    @Binds
+    @IntoSet
+    abstract fun addStage(addStage: AddStage): Destination
 }

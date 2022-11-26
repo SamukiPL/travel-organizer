@@ -1,23 +1,45 @@
 package me.samuki.journeyDetails.presentation
 
-import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import me.samuki.composableevent.getValue
+import me.samuki.composableevent.mutableEventOf
 import me.samuki.journeyDetails.presentation.states.JourneyDetailsState
 import javax.inject.Inject
 
 @HiltViewModel
-internal class JourneyDetailsViewModel @Inject constructor() : ViewModel() {
+class JourneyDetailsViewModel @Inject constructor() : ViewModel() {
 
-    private val _viewState = mutableStateOf<JourneyDetailsState>(JourneyDetailsState.Loading)
-    val viewState: State<JourneyDetailsState> = _viewState
+    var viewState by mutableStateOf(ViewState())
+        private set
+
+    private val _viewEvent = mutableEventOf<ViewEvent>()
+    val viewEvent by _viewEvent
 
     fun initDetails(id: String) {
+        viewModelScope.launch {
+            delay(5000)
+            viewState = viewState.copy(
+                state = JourneyDetailsState.Empty
+            )
+        }
     }
 
-    fun click() {
-        _viewState.value = JourneyDetailsState.Empty
+    fun addStage() {
+
     }
 
+    data class ViewState(
+        val state: JourneyDetailsState = JourneyDetailsState.Loading
+    )
+
+    sealed interface ViewEvent {
+
+    }
 }
