@@ -1,0 +1,22 @@
+CREATE TABLE StorageShelter (
+  id TEXT NOT NULL PRIMARY KEY,
+  stageId TEXT NOT NULL,
+  score INTEGER NOT NULL,
+  url TEXT NOT NULL,
+  urlName TEXT NOT NULL,
+  urlImage TEXT NOT NULL,
+  FOREIGN KEY (stageId) REFERENCES StorageStage(id) ON DELETE CASCADE
+);
+
+selectAllForStage:
+SELECT *
+FROM StorageShelter
+WHERE stageId = :stageId;
+
+upsertShelter:
+INSERT OR REPLACE INTO StorageShelter
+VALUES ?;
+
+deleteShelter:
+DELETE FROM StorageShelter
+WHERE id = :id;

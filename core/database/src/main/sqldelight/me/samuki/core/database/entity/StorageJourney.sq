@@ -1,0 +1,19 @@
+CREATE TABLE StorageJourney (
+  id TEXT NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  lastRevision TEXT AS kotlinx.datetime.LocalDateTime NOT NULL
+);
+
+CREATE INDEX StorageJourney_id ON StorageJourney(id);
+
+selectAll:
+SELECT *
+FROM StorageJourney;
+
+upsertJourney:
+INSERT OR REPLACE INTO StorageJourney
+VALUES ?;
+
+deleteJourney:
+DELETE FROM StorageJourney
+WHERE id = :id;

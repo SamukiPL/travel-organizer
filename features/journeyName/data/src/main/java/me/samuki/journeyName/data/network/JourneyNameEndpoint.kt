@@ -1,15 +1,14 @@
 package me.samuki.journeyName.data.network
 
-import me.samuki.journeyName.data.network.model.CreateJourneyResponse
-import me.samuki.journeyName.data.network.model.EditNameResponse
+import me.samuki.journeyName.data.network.model.JourneyNameResponse
 import me.samuki.journeyName.data.network.model.JourneyNameRequest
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface JourneyNameEndpoint {
+internal interface JourneyNameEndpoint {
     @POST("createJourney")
-    fun createJourney(@Body body: JourneyNameRequest): CreateJourneyResponse
+    fun createJourney(@Body body: JourneyNameRequest): JourneyNameResponse
 
     @POST("journey/editName")
-    fun editName(@Body body: JourneyNameRequest): EditNameResponse
+    fun editName(@Body body: JourneyNameRequest): JourneyNameResponse
 }

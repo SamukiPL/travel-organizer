@@ -2,14 +2,18 @@ plugins {
     id("me.samuki.library")
     id("me.samuki.hilt")
     id("com.google.devtools.ksp")
+    id("com.squareup.sqldelight")
+}
+
+android {
+    namespace = "me.samuki.core.database"
 }
 
 dependencies {
-    val room_version = "2.4.3"
+    implementation(project(":core:common"))
+    implementation(project(":core:domain"))
 
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation("com.squareup.sqldelight:android-driver:1.5.4")
 
-    ksp("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
+    testImplementation(project(":core:testing"))
 }

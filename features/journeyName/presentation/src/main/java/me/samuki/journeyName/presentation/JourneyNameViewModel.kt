@@ -1,31 +1,30 @@
 package me.samuki.journeyName.presentation
 
-import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import me.samuki.composableevent.Event
 import me.samuki.composableevent.mutableEventOf
-import me.samuki.journeyName.domain.CreateNewJourney
-import me.samuki.journeyName.domain.EditJourneyName
+import me.samuki.journeyName.domain.CreateOrUpdateName
 import javax.inject.Inject
 
 @HiltViewModel
 internal class JourneyNameViewModel @Inject constructor(
-    private val createNewJourney: CreateNewJourney,
-    private val editJourneyName: EditJourneyName
+    private val createNewJourney: CreateOrUpdateName,
 ) : ViewModel() {
 
-    private val _viewState = mutableStateOf(ViewState())
-    val viewState: State<ViewState> = _viewState
+    var viewState by mutableStateOf(ViewState())
+        private set
 
     private val _successEvent = mutableEventOf<String>()
     val successEvent: Event<String> = _successEvent
 
     fun initState(id: String?, name: String?) {
-        _viewState.value = _viewState.value.copy(
+        viewState = viewState.copy(
             id = id,
             type = id?.let { JourneyNameType.Change } ?: JourneyNameType.New,
             name = name.orEmpty()
@@ -33,38 +32,25 @@ internal class JourneyNameViewModel @Inject constructor(
     }
 
     fun changeName(name: String) {
-        _viewState.value = _viewState.value.copy(
+        viewState = viewState.copy(
             name = name
         )
     }
 
     fun takeAction() {
-        val currentState = viewState.value
-        if (currentState.name.isEmpty()) return
+        if (viewState.name.isEmpty()) return
 
-        if (currentState.type == JourneyNameType.New) {
-            createNew(currentState.name)
-        } else {
-            editName(requireNotNull(currentState.id), currentState.name)
-        }
-    }
-
-    private fun createNew(name: String) {
+        viewState = viewState.copy(
+            loadingVisible = true
+        )
         viewModelScope.launch {
-            createNewJourney(name).onSuccess {
+            createNewJourney(viewState.id, viewState.name).onSuccess {
                 _successEvent.sendEvent(it)
             }.onFailure {
-
-            }
-        }
-    }
-
-    private fun editName(id: String, name: String) {
-        viewModelScope.launch {
-            editJourneyName(id, name).onSuccess {
-                _successEvent.sendEvent(it)
-            }.onFailure {
-
+                viewState = viewState.copy(
+                    loadingVisible = false,
+                    errorVisible = true
+                )
             }
         }
     }
@@ -72,6 +58,8 @@ internal class JourneyNameViewModel @Inject constructor(
     data class ViewState(
         val id: String? = null,
         val type: JourneyNameType = JourneyNameType.New,
-        val name: String = ""
+        val name: String = "",
+        val loadingVisible: Boolean = false,
+        val errorVisible: Boolean = false
     )
 }

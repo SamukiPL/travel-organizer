@@ -1,0 +1,25 @@
+CREATE TABLE StorageStage (
+  id TEXT NOT NULL PRIMARY KEY,
+  journeyId TEXT NOT NULL,
+  nextStageId TEXT,
+  name TEXT NOT NULL,
+  url TEXT NOT NULL,
+  urlName TEXT NOT NULL,
+  urlImage TEXT NOT NULL,
+  type TEXT AS me.samuki.core.domain.StageType NOT NULL,
+  FOREIGN KEY (journeyId) REFERENCES StorageJourney(id) ON DELETE CASCADE,
+  FOREIGN KEY (nextStageId) REFERENCES StorageStage(id)
+);
+
+selectAllForJourney:
+SELECT *
+FROM StorageStage
+WHERE journeyId = :journeyId;
+
+upsertStage:
+INSERT OR REPLACE INTO StorageStage
+VALUES ?;
+
+deleteStage:
+DELETE FROM StorageStage
+WHERE id = :id;

@@ -9,7 +9,7 @@ import me.samuki.journeyName.data.network.MockJourneyNameEndpoint
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
-abstract class JourneyNameMockModule {
+internal abstract class JourneyNameMockModule {
     @Binds
     abstract fun journeyNameEndpoint(mockJourneyNameEndpoint: MockJourneyNameEndpoint): JourneyNameEndpoint
 }

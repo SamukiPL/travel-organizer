@@ -9,7 +9,7 @@ import me.samuki.journeyName.domain.JourneyNameRepository
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
-abstract class JourneyNameDataModule {
+internal abstract class JourneyNameDataModule {
     @Binds
     abstract fun journeyNameRepository(dataJourneyNameRepository: DataJourneyNameRepository): JourneyNameRepository
 }
