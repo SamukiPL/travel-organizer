@@ -22,6 +22,12 @@ fun Project.configureKotlinAndroid(
             targetCompatibility = JavaVersion.VERSION_11
         }
 
+        testOptions {
+            unitTests.all {
+                it.useJUnitPlatform()
+            }
+        }
+
         kotlinOptions {
             // Treat all Kotlin warnings as errors (disabled by default)
             // Override by setting warningsAsErrors=true in your ~/.gradle/gradle.properties

@@ -38,7 +38,7 @@ class ApplicationPlugin : Plugin<Project> {
     private fun Project.configureAppDependencies() {
         dependencies {
             rootProject.allprojects
-                .filter { it.childProjects.isEmpty() && it != this@configureAppDependencies }
+                .filter { it.childProjects.isEmpty() && it != this@configureAppDependencies && it.name != "testing" }
                 .forEach { implementation(it) }
         }
     }

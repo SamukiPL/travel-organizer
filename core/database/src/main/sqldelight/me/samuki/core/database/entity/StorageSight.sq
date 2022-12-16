@@ -1,0 +1,22 @@
+CREATE TABLE StorageSight (
+  id TEXT NOT NULL PRIMARY KEY,
+  stageId TEXT NOT NULL,
+  score INTEGER NOT NULL,
+  url TEXT NOT NULL,
+  urlName TEXT NOT NULL,
+  urlImage TEXT NOT NULL,
+  FOREIGN KEY (stageId) REFERENCES StorageStage(id) ON DELETE CASCADE
+);
+
+selectAllForStage:
+SELECT *
+FROM StorageSight
+WHERE stageId = :stageId;
+
+upsertSight:
+INSERT OR REPLACE INTO StorageSight
+VALUES ?;
+
+deleteSight:
+DELETE FROM StorageSight
+WHERE id = :id;
