@@ -1,13 +1,17 @@
 plugins {
     id("me.samuki.library")
     id("me.samuki.hilt")
+    id("kotlinx-serialization")
 }
 
 dependencies {
+    val ktorVersion="2.2.1"
+
     implementation(project(":core:common"))
 
-    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    api("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+    api("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-cio:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+    implementation("io.ktor:ktor-client-logging:$ktorVersion")
 }

@@ -1,7 +1,5 @@
 package me.samuki.core.ui
 
-import androidx.annotation.StringRes
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,37 +17,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun TravelTopBar(
-    @StringRes title: String,
-    modifier: Modifier = Modifier,
-    shouldShowBackButton: Boolean,
-    backButtonAction: () -> Unit
-) {
-    val startPadding = if (shouldShowBackButton) 4.dp else 16.dp
-    AnimatedVisibility(
-        visible = title.isNotEmpty(),
-        modifier = modifier.padding(start = startPadding, top = 8.dp)
-    ) {
-        TopBarRow(
-            title = title,
-            shouldShowBackButton = shouldShowBackButton,
-            backButtonAction = backButtonAction
-        )
-    }
-}
-
-@Composable
-private fun TopBarRow(
     title: String,
+    showBackButton: Boolean,
     modifier: Modifier = Modifier,
-    shouldShowBackButton: Boolean,
     backButtonAction: () -> Unit
 ) {
     Row(
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(start = if (showBackButton) 4.dp else 16.dp, top = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (shouldShowBackButton) {
+        if (showBackButton) {
             IconButton(onClick = { backButtonAction.invoke() }) {
                 Icon(
                     painterResource(id = R.drawable.ic_back_arrow),

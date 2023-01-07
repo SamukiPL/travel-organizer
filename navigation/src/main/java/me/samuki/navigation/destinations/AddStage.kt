@@ -8,7 +8,7 @@ import me.samuki.addstage.presentation.AddStageScreen
 import me.samuki.navigation.AppNavigation
 import javax.inject.Inject
 
-class AddStage @Inject constructor() : Destination {
+internal class AddStage @Inject constructor() : Destination {
     override val routeName: String
         get() = route
     override val arguments: List<NamedNavArgument>
@@ -20,7 +20,7 @@ class AddStage @Inject constructor() : Destination {
         )
 
     @Composable
-    override fun BuildDestination(navigation: AppNavigation, screenTitle: (String?) -> Unit) {
+    override fun BuildDestination(navigation: AppNavigation) {
         AddStageScreen(addStageNavigation = navigation)
     }
 

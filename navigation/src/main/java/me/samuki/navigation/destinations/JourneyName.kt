@@ -6,15 +6,15 @@ import me.samuki.journeyName.presentation.JourneyNameScreen
 import me.samuki.navigation.AppNavigation
 import javax.inject.Inject
 
-class JourneyName @Inject constructor() : Destination {
+internal class JourneyName @Inject constructor() : Destination {
     override val routeName: String
         get() = route
     override val arguments: List<NamedNavArgument>
         get() = emptyList()
 
     @Composable
-    override fun BuildDestination(navigation: AppNavigation, screenTitle: (String?) -> Unit) {
-        screenTitle(JourneyNameScreen(navigation = navigation))
+    override fun BuildDestination(navigation: AppNavigation) {
+        JourneyNameScreen(navigation = navigation)
     }
 
     companion object {

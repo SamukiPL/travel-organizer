@@ -1,6 +1,7 @@
 package me.samuki.navigation
 
 import androidx.navigation.NavController
+import me.samuki.core.presentation.navigation.GoBackNavigation
 import me.samuki.journeyName.presentation.JourneyNameNavigation
 import me.samuki.navigation.destinations.EditJourneyName
 import me.samuki.navigation.destinations.JourneyDetails
@@ -8,7 +9,7 @@ import me.samuki.navigation.ext.getString
 
 internal class ProvidedJourneyNameNavigation(
     private val navController: NavController
-) : JourneyNameNavigation {
+) : JourneyNameNavigation, GoBackNavigation by ProvidedGoBackNavigation(navController) {
     override fun getJourneyNameNameArgument(): String? = navController.getString(EditJourneyName.nameArgument)
 
     override fun getJourneyNameIdArgument(): String? = navController.getString(EditJourneyName.idArgument)

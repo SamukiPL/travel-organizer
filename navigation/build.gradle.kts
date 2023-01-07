@@ -6,8 +6,11 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":core:presentation"))
+    implementation(project(":core:ui"))
     implementation(project(":features:onboarding"))
-    implementation(project(":features:journeyDetails:presentation"))
+    implementation(project(":features:dashboard:presentation"))
     implementation(project(":features:journeyName:presentation"))
+    implementation(project(":features:journeyDetails:presentation"))
     implementation(project(":features:addStage:presentation"))
 }

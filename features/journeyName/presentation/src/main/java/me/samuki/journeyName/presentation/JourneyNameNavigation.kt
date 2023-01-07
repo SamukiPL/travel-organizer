@@ -1,6 +1,8 @@
 package me.samuki.journeyName.presentation
 
-interface JourneyNameNavigation {
+import me.samuki.core.presentation.navigation.GoBackNavigation
+
+interface JourneyNameNavigation : GoBackNavigation {
     fun getJourneyNameNameArgument(): String?
     fun getJourneyNameIdArgument(): String?
 
