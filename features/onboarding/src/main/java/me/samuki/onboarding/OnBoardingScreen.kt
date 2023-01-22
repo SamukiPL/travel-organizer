@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
@@ -29,9 +30,15 @@ import com.google.accompanist.pager.rememberPagerState
 
 @Composable
 fun OnBoardingScreen(navigation: OnBoardingNavigation) {
+    val viewModel: OnBoardingViewModel = hiltViewModel()
+    viewModel.viewEvent {
+        when (it) {
+            OnBoardingViewModel.ViewEvent.EndOnBoarding -> navigation.createNewJourney()
+        }
+    }
     val pages = OnBoardingPage.values()
     OnBoardingContent(pages) {
-        navigation.createNewJourney()
+        viewModel.endOnBoarding()
     }
 }
 

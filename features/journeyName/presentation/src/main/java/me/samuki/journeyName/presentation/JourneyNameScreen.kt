@@ -18,9 +18,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import me.samuki.core.ui.LoadingButton
+import me.samuki.core.ui.TravelTopBar
 
 @Composable
-fun JourneyNameScreen(navigation: JourneyNameNavigation): String {
+fun JourneyNameScreen(navigation: JourneyNameNavigation) {
     val viewModel: JourneyNameViewModel = hiltViewModel()
     LaunchedEffect(Unit) {
         viewModel.initState(
@@ -32,24 +33,46 @@ fun JourneyNameScreen(navigation: JourneyNameNavigation): String {
         navigation.goToDetails(it)
     }
 
-    val state = viewModel.viewState
     JourneyNameContent(
-        state.type, state.name, state.loadingVisible, viewModel::changeName, viewModel::takeAction
+        viewModel.viewState, viewModel::changeName, viewModel::takeAction, navigation::goBack
     )
-
-    return stringResource(id = state.type.title)
 }
 
 @Composable
 private fun JourneyNameContent(
+    state: JourneyNameViewModel.ViewState,
+    textChange: (String) -> Unit,
+    action: () -> Unit,
+    goBack: () -> Unit
+) {
+    Column(modifier = Modifier.fillMaxSize()) {
+        TravelTopBar(
+            stringResource(id = state.type.title),
+            showBackButton = true,
+            backButtonAction = goBack
+        )
+        JourneyNameBody(
+            type = state.type,
+            text = state.name,
+            isLoading = state.loadingVisible,
+            textChange = textChange,
+            action = action,
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+}
+
+@Composable
+private fun JourneyNameBody(
     type: JourneyNameType,
     text: String,
     isLoading: Boolean,
     textChange: (String) -> Unit,
-    action: () -> Unit
+    action: () -> Unit,
+    modifier: Modifier
 ) {
     Box(
-        Modifier.fillMaxSize(),
+        modifier,
     ) {
         DescriptionWithTextField(
             type = type,

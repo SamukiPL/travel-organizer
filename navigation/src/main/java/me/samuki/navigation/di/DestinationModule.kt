@@ -16,6 +16,10 @@ internal abstract class DestinationModule {
 
     @Binds
     @IntoSet
+    abstract fun dashboard(dashboard: Dashboard): Destination
+
+    @Binds
+    @IntoSet
     abstract fun journeyName(journeyName: JourneyName): Destination
 
     @Binds

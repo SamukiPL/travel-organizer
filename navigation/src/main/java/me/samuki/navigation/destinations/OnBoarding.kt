@@ -13,9 +13,8 @@ internal class OnBoarding @Inject constructor() : Destination {
         get() = emptyList()
 
     @Composable
-    override fun BuildDestination(navigation: AppNavigation, screenTitle: (String?) -> Unit) {
+    override fun BuildDestination(navigation: AppNavigation) {
         OnBoardingScreen(navigation)
-        screenTitle(null)
     }
 
     companion object {

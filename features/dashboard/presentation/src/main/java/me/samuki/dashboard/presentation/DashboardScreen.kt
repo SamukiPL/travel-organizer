@@ -1,37 +1,23 @@
 package me.samuki.dashboard.presentation
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
-import com.airbnb.lottie.compose.rememberLottieComposition
+import androidx.compose.runtime.LaunchedEffect
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(navigation: DashboardNavigation) {
+    val viewModel: DashboardViewModel = hiltViewModel()
+    LaunchedEffect(Unit) {
+        viewModel.checkFirstTimeOpen()
+    }
+
+    viewModel.event {
+    }
+
     DashboardScreenContent()
 }
 
 @Composable
 private fun DashboardScreenContent() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFDABBDD)),
-    ) {
-        val composition by rememberLottieComposition(LottieCompositionSpec.Asset("animations/third_step.json"))
-        LottieAnimation(
-            composition = composition,
-            iterations = LottieConstants.IterateForever,
-            modifier = Modifier.padding(32.dp).align(Alignment.Center)
-        )
-    }
+
 }

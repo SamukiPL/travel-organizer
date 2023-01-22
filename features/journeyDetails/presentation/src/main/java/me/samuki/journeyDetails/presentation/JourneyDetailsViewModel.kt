@@ -14,7 +14,7 @@ import me.samuki.journeyDetails.presentation.states.JourneyDetailsState
 import javax.inject.Inject
 
 @HiltViewModel
-class JourneyDetailsViewModel @Inject constructor() : ViewModel() {
+internal class JourneyDetailsViewModel @Inject constructor() : ViewModel() {
 
     var viewState by mutableStateOf(ViewState())
         private set

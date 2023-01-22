@@ -11,7 +11,7 @@ import java.util.UUID
 import javax.inject.Inject
 
 @Immutable
-class JourneyDetails @Inject constructor() : Destination {
+internal class JourneyDetails @Inject constructor() : Destination {
     override val routeName: String
         get() = route
     override val arguments: List<NamedNavArgument>
@@ -23,8 +23,8 @@ class JourneyDetails @Inject constructor() : Destination {
         )
 
     @Composable
-    override fun BuildDestination(navigation: AppNavigation, screenTitle: (String?) -> Unit) {
-        JourneyDetailsScreen(journeyDetailsNavigation = navigation, screenTitle)
+    override fun BuildDestination(navigation: AppNavigation) {
+        JourneyDetailsScreen(journeyDetailsNavigation = navigation)
     }
 
     companion object {
