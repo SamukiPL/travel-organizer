@@ -20,7 +20,7 @@ internal abstract class DestinationModule {
 
     @Binds
     @IntoSet
-    abstract fun journeyName(journeyName: JourneyName): Destination
+    abstract fun journeyName(journeyName: AddJourney): Destination
 
     @Binds
     @IntoSet

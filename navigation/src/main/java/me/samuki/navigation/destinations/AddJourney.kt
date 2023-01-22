@@ -6,7 +6,7 @@ import me.samuki.journeyName.presentation.JourneyNameScreen
 import me.samuki.navigation.AppNavigation
 import javax.inject.Inject
 
-internal class JourneyName @Inject constructor() : Destination {
+internal class AddJourney @Inject constructor() : Destination {
     override val routeName: String
         get() = route
     override val arguments: List<NamedNavArgument>
