@@ -16,10 +16,12 @@ import me.samuki.core.database.converters.LocalDateTimeAdapter
 import me.samuki.core.database.converters.StageTypeAdapter
 import me.samuki.core.database.entity.StorageJourney
 import me.samuki.core.database.entity.StorageStage
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
+    @Singleton
     @Provides
     fun database(@ApplicationContext context: Context): Database {
         val driver = AndroidSqliteDriver(Database.Schema, context, "travel.db")

@@ -21,4 +21,6 @@ class NetworkJourneyDataSource @Inject constructor(
     )
 
     suspend fun getSavableJourneys() = journeyEndpoint.getJourneys()
+
+    suspend fun getJourneyDetails(journeyId: String) = journeyEndpoint.getDetails(journeyId)
 }

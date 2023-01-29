@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.dp
 import java.lang.Float.min
 
 @Composable
-fun JourneyDetailsLoading(modifier: Modifier = Modifier) {
+internal fun JourneyDetailsLoading(modifier: Modifier = Modifier) {
     val buttonSize = 64
     val buttonPadding = 16
     val itemHeight = 175

@@ -2,7 +2,6 @@ package me.samuki.core.database.converters
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
-import me.samuki.core.domain.StageType
 
 class StageTypeAdapterTest : BehaviorSpec({
 
@@ -11,7 +10,7 @@ class StageTypeAdapterTest : BehaviorSpec({
     given("StageTypeAdapter") {
         underTest = StageTypeAdapter()
 
-        StageType.values().forEach { type ->
+        me.samuki.core.model.StageType.values().forEach { type ->
             and("using String with StageType.$type name") {
                 val typeName = type.name
 

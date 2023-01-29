@@ -10,6 +10,11 @@ selectAll:
 SELECT *
 FROM StorageJourney;
 
+selectJourney:
+SELECT *
+FROM StorageJourney
+WHERE id = :journeyId;
+
 upsertJourney:
 INSERT OR REPLACE INTO StorageJourney
 VALUES ?;
