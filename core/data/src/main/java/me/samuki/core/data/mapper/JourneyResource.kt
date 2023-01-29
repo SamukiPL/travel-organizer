@@ -2,7 +2,7 @@ package me.samuki.core.data.mapper
 
 import me.samuki.core.database.entity.StorageJourney
 import me.samuki.core.domain.model.Journey
-import me.samuki.core.network.model.response.ApiJourney
+import me.samuki.core.network.model.ApiJourney
 
 fun ApiJourney.toDomain() = Journey(
     id = id,

@@ -8,6 +8,9 @@ dependencies {
     val ktorVersion="2.2.1"
 
     implementation(project(":core:common"))
+    implementation(project(":core:model"))
+
+    mockImplementation(project(":core:database"))
 
     api("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
