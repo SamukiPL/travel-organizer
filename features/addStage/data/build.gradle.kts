@@ -5,3 +5,7 @@ plugins {
 dependencies {
     api(project(":core:network"))
 }
+
+android {
+    namespace = "me.samuki.addstage.data"
+}

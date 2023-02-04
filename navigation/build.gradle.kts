@@ -5,6 +5,10 @@ plugins {
     id("me.samuki.hilt.compose")
 }
 
+android {
+    namespace = "me.samuki.navigation"
+}
+
 dependencies {
     implementation(project(":core:presentation"))
     implementation(project(":core:ui"))

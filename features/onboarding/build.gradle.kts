@@ -6,6 +6,10 @@ plugins {
     id("me.samuki.hilt.compose")
 }
 
+android {
+    namespace = "me.samuki.onboarding"
+}
+
 dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:settings"))

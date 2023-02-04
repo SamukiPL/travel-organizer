@@ -4,6 +4,10 @@ plugins {
     id("kotlinx-serialization")
 }
 
+android {
+    namespace = "me.samuki.core.data"
+}
+
 dependencies {
     api(project(":core:common"))
     api(project(":core:network"))
