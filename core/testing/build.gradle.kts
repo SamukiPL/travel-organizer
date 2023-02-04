@@ -3,6 +3,10 @@ plugins {
     id("me.samuki.hilt")
 }
 
+android {
+    namespace = "me.samuki.core.testing"
+}
+
 dependencies {
     val kotestVersion = "5.5.4"
     val mockkVersion = "1.13.3"

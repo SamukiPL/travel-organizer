@@ -6,6 +6,8 @@ plugins {
 }
 
 android {
+    namespace = "me.samuki.travel"
+
     defaultConfig {
         applicationId = "me.samuki.travel"
         versionCode = 1

@@ -3,6 +3,10 @@ plugins {
     id("me.samuki.hilt")
 }
 
+android {
+    namespace = "me.samuki.core.domain"
+}
+
 dependencies {
     implementation(project(":core:common"))
     api(project(":core:model"))

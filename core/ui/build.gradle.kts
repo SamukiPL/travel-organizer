@@ -4,3 +4,7 @@ plugins {
     id("me.samuki.hilt")
     id("me.samuki.hilt.compose")
 }
+
+android {
+    namespace = "me.samuki.core.ui"
+}

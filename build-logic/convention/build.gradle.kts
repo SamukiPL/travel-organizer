@@ -5,13 +5,13 @@ plugins {
 group = "me.samuki.travel.buildlogic"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
-    compileOnly(libs.android.gradlePlugin)
-    compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly("com.android.tools.build:gradle:7.4.1")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
     implementation(kotlin("script-runtime"))
 }
 gradlePlugin {
