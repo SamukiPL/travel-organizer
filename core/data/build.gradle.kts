@@ -13,4 +13,6 @@ dependencies {
     api(project(":core:network"))
     api(project(":core:database"))
     api(project(":core:domain"))
+
+    testImplementation(project(":core:testing"))
 }
