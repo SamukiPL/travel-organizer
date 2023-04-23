@@ -11,9 +11,8 @@ internal class ProvidedJourneyDetailsNavigation(private val navController: NavCo
     override fun getJourneyDetailsIdArgument(): String =
         requireNotNull(navController.getString(JourneyDetails.idArgument))
 
-    override fun goToAddNewStage() {
-        val route = AddStage.createRoute("id")
-        navController.navigate(route) {
+    override fun goToAddNewStage(journeyId: String) {
+        navController.navigate(AddStage.createRoute(journeyId)) {
             popUpTo(requireNotNull(navController.currentDestination?.route)) {
                 inclusive = false
             }

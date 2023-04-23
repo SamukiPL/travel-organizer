@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -17,11 +15,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import me.samuki.core.presentation.navigation.GoBackNavigation
 import me.samuki.core.ui.LoadingButton
+import me.samuki.core.ui.TravelTextField
 import me.samuki.core.ui.TravelTopBar
 
 @Composable
-fun JourneyNameScreen(navigation: JourneyNameNavigation) {
+fun JourneyNameScreen(navigation: JourneyNameNavigation, goBackNavigation: GoBackNavigation) {
     val viewModel: JourneyNameViewModel = hiltViewModel()
     LaunchedEffect(Unit) {
         viewModel.initState(
@@ -34,7 +34,10 @@ fun JourneyNameScreen(navigation: JourneyNameNavigation) {
     }
 
     JourneyNameContent(
-        viewModel.viewState, viewModel::changeName, viewModel::takeAction, navigation::goBack
+        viewModel.viewState,
+        viewModel::changeName,
+        viewModel::takeAction,
+        goBackNavigation::goBack
     )
 }
 
@@ -77,7 +80,7 @@ private fun JourneyNameBody(
         DescriptionWithTextField(
             type = type,
             text = text,
-            isEnabled = isLoading.not(),
+            enabled = isLoading.not(),
             textChange = textChange,
             modifier = Modifier.align(Alignment.TopCenter)
         )
@@ -96,7 +99,7 @@ private fun JourneyNameBody(
 private fun DescriptionWithTextField(
     type: JourneyNameType,
     text: String,
-    isEnabled: Boolean,
+    enabled: Boolean,
     textChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -110,17 +113,14 @@ private fun DescriptionWithTextField(
             modifier = Modifier.padding(start = 16.dp, top = 8.dp),
             style = MaterialTheme.typography.subtitle2
         )
-        OutlinedTextField(
+        TravelTextField(
             value = text,
             onValueChange = textChange,
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                backgroundColor = MaterialTheme.colors.onSurface.copy(alpha = 0.3F)
-            ),
-            shape = MaterialTheme.shapes.medium,
-            enabled = isEnabled,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            enabled = enabled,
+            labelText = "Journey Name"
         )
     }
 }

@@ -6,6 +6,7 @@ import com.squareup.sqldelight.runtime.coroutines.mapToOne
 import kotlinx.coroutines.flow.Flow
 import me.samuki.core.database.JourneyQueries
 import me.samuki.core.database.entity.StorageJourney
+import me.samuki.core.model.Id
 import javax.inject.Inject
 
 class LocalJourneyDataSource @Inject constructor(
@@ -23,7 +24,7 @@ class LocalJourneyDataSource @Inject constructor(
         .asFlow()
         .mapToList()
 
-    fun getJourney(journeyId: String): Flow<StorageJourney> = journeyQueries.selectJourney(journeyId)
+    fun getJourney(journeyId: Id): Flow<StorageJourney> = journeyQueries.selectJourney(journeyId)
         .asFlow()
         .mapToOne()
 }

@@ -5,6 +5,7 @@ import com.squareup.sqldelight.runtime.coroutines.mapToList
 import kotlinx.coroutines.flow.Flow
 import me.samuki.core.database.StageQueries
 import me.samuki.core.database.entity.StorageStage
+import me.samuki.core.model.Id
 import javax.inject.Inject
 
 class LocalStageDataSource @Inject constructor(
@@ -18,12 +19,26 @@ class LocalStageDataSource @Inject constructor(
         }
     }
 
-    fun getStagesForJourney(journeyId: String): Flow<List<StorageStage>> =
+    fun addNextStageIdToLastStageInJourney(nextStageId: Id, journeyId: Id) {
+        stageQueries.transaction {
+            stageQueries.updateNextStageIdInLastStageOfJourney(nextStageId, journeyId)
+        }
+    }
+
+    fun getStagesForJourney(journeyId: Id): Flow<List<StorageStage>> =
         stageQueries.selectAllForJourney(journeyId)
             .asFlow()
             .mapToList()
 
-    fun deleteStage(stageId: String) {
+    fun deleteStage(stageId: Id) {
         stageQueries.deleteStage(stageId)
+    }
+
+    fun changeStageOrder(reorderedStageId: Id, newParentStageId: Id) {
+        stageQueries.transaction {
+            stageQueries.updateNextStageIdInPredecessorFromSuccessor(reorderedStageId)
+            stageQueries.updateNextStageIdFromSuccessor(newParentStageId, reorderedStageId)
+            stageQueries.updateSuccessorId(reorderedStageId, newParentStageId)
+        }
     }
 }

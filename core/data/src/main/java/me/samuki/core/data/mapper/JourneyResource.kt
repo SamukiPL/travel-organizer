@@ -5,19 +5,19 @@ import me.samuki.core.domain.model.Journey
 import me.samuki.core.network.model.ApiJourney
 
 fun ApiJourney.toDomain() = Journey(
-    id = id,
+    id = id.toId(),
     name = name,
     lastRevision = lastRevision
 )
 
 fun ApiJourney.toStorage() = StorageJourney(
-    id = id,
+    id = id.toId(),
     name = name,
-    lastRevision = lastRevision
+    last_revision = lastRevision
 )
 
 fun StorageJourney.toDomain() = Journey(
     id = id,
     name = name,
-    lastRevision = lastRevision
+    lastRevision = last_revision
 )

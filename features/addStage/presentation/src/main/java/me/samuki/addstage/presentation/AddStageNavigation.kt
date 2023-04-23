@@ -1,5 +1,5 @@
 package me.samuki.addstage.presentation
 
 interface AddStageNavigation {
-    fun returnToDetails()
+    fun getJourneyIdArgument(): String
 }

@@ -24,7 +24,7 @@ internal class JourneyDetails @Inject constructor() : Destination {
 
     @Composable
     override fun BuildDestination(navigation: AppNavigation) {
-        JourneyDetailsScreen(journeyDetailsNavigation = navigation)
+        JourneyDetailsScreen(journeyDetailsNavigation = navigation, goBackNavigation = navigation)
     }
 
     companion object {

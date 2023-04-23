@@ -12,9 +12,12 @@ import me.samuki.core.database.JourneyQueries
 import me.samuki.core.database.ShelterQueries
 import me.samuki.core.database.SightQueries
 import me.samuki.core.database.StageQueries
+import me.samuki.core.database.converters.IdAdapter
 import me.samuki.core.database.converters.LocalDateTimeAdapter
 import me.samuki.core.database.converters.StageTypeAdapter
 import me.samuki.core.database.entity.StorageJourney
+import me.samuki.core.database.entity.StorageShelter
+import me.samuki.core.database.entity.StorageSight
 import me.samuki.core.database.entity.StorageStage
 import javax.inject.Singleton
 
@@ -28,10 +31,22 @@ object DatabaseModule {
         return Database(
             driver,
             StorageJourneyAdapter = StorageJourney.Adapter(
-                lastRevisionAdapter = LocalDateTimeAdapter()
+                idAdapter = IdAdapter(),
+                last_revisionAdapter = LocalDateTimeAdapter()
             ),
             StorageStageAdapter = StorageStage.Adapter(
-                typeAdapter = StageTypeAdapter()
+                idAdapter = IdAdapter(),
+                typeAdapter = StageTypeAdapter(),
+                journey_idAdapter = IdAdapter(),
+                next_stage_idAdapter = IdAdapter()
+            ),
+            StorageShelterAdapter = StorageShelter.Adapter(
+                idAdapter = IdAdapter(),
+                stage_idAdapter = IdAdapter()
+            ),
+            StorageSightAdapter = StorageSight.Adapter(
+                idAdapter = IdAdapter(),
+                stage_idAdapter = IdAdapter()
             )
         )
     }
