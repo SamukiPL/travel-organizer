@@ -12,6 +12,6 @@ data class JourneyItem(
  * has to be mapped to compose one.
  */
 fun Journey.toItem() = JourneyItem(
-    id = id,
+    id = id.toString(),
     name = name
 )

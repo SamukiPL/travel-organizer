@@ -5,22 +5,22 @@ import me.samuki.core.domain.model.Stage
 import me.samuki.core.network.model.ApiStage
 
 fun ApiStage.toStorage() = StorageStage(
-    id = requireNotNull(id) {
+    id = requireNotNull(id?.toId()) {
         "Id returned from api, can't be null"
     },
-    journeyId = journeyId,
-    nextStageId = nextStageId,
+    journey_id = journeyId.toId(),
+    next_stage_id = nextStageId?.toId(),
     name = name,
     url = url,
-    urlName = urlName,
-    urlImage = urlImage,
+    url_name = urlName,
+    url_image = urlImage,
     type = type
 )
 
 fun Stage.toApi() = ApiStage(
-    id = id.ifEmpty { null },
-    journeyId = journeyId,
-    nextStageId = nextStageId,
+    id = id.toString().ifEmpty { null },
+    journeyId = journeyId.toString(),
+    nextStageId = nextStageId?.toString(),
     name = name,
     url = url,
     urlName = urlName,
@@ -30,11 +30,11 @@ fun Stage.toApi() = ApiStage(
 
 fun StorageStage.toDomain() = Stage(
     id = id,
-    journeyId = journeyId,
-    nextStageId = nextStageId,
+    journeyId = journey_id,
+    nextStageId = next_stage_id,
     name = name,
     url = url,
-    urlName = urlName,
-    urlImage = urlImage,
+    urlName = url_name,
+    urlImage = url_image,
     type = type
 )

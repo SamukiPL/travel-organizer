@@ -25,7 +25,7 @@ internal class EditJourneyName @Inject constructor() : Destination {
 
     @Composable
     override fun BuildDestination(navigation: AppNavigation) {
-        JourneyNameScreen(navigation = navigation)
+        JourneyNameScreen(navigation = navigation, goBackNavigation = navigation)
     }
 
     companion object {

@@ -10,7 +10,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import me.samuki.core.network.endpoint.UrlEndpoint
-import me.samuki.core.network.model.ApiMetadata
+import me.samuki.core.network.model.ApiUrlMetadata
 
 class NetworkScrapperDataSourceTest : BehaviorSpec({
 
@@ -35,7 +35,7 @@ class NetworkScrapperDataSourceTest : BehaviorSpec({
                     coVerify(exactly = 1) { urlEndpoint.getWebsiteHtml(any()) }
                 }
                 then("result should be ApiMetadata") {
-                    result should beOfType(ApiMetadata::class)
+                    result should beOfType(ApiUrlMetadata::class)
                 }
                 then("result.url should be same as test url") {
                     result.url shouldBe TEST_URL
@@ -87,7 +87,7 @@ const val TEST_IMAGE_URL = "test image url"
 
 const val TEST_HTML = "<meta property=\"fb:app_id\" content=\"1401488693436528\">\n" +
         "    <meta name=\"apple-itunes-app\" content=\"app-id=1477376905\" />\n" +
-        "      <meta name=\"twitter:image:src\" content=\"https://opengraph.githubassets.com/ad9f8cdb30b01bcca52bfc04a344b8405eadc6d64e0b891be7c1f1a0084443f8/SamukiPL/convention-example-project\" /><meta name=\"twitter:site\" content=\"@github\" /><meta name=\"twitter:card\" content=\"summary_large_image\" /><meta name=\"twitter:title\" content=\"SamukiPL/convention-example-project\" /><meta name=\"twitter:description\" content=\"Contribute to SamukiPL/convention-example-project development by creating an account on GitHub.\" />\n" +
+        "      <meta name=\"twitter:image:src\" content=\"https://opengraph.githubassets.com/ad9f8cdb30b01bcca52bfc04a344b8405eadc6d64e0b891be7c1f1a0084443f8/SamukiPL/convention-example-project\" /><meta name=\"twitter:site\" content=\"@github\" /><meta name=\"twitter:card\" content=\"summary_large_image\" /><meta name=\"twitter:title\" content=\"SamukiPL/convention-example-project\" /><meta name=\"image\" content=\"Contribute to SamukiPL/convention-example-project development by creating an account on GitHub.\" />\n" +
         "      <meta property=\"og:image\" content=\"$TEST_IMAGE_URL\" /><meta property=\"og:image:alt\" content=\"Contribute to SamukiPL/convention-example-project development by creating an account on GitHub.\" /><meta property=\"og:image:width\" content=\"1200\" /><meta property=\"og:image:height\" content=\"600\" /><meta property=\"og:site_name\" content=\"$TEST_SITE_NAME\" /><meta property=\"og:type\" content=\"object\" /><meta property=\"og:title\" content=\"SamukiPL/convention-example-project\" /><meta property=\"og:url\" content=\"$TEST_URL\" /><meta property=\"og:description\" content=\"Contribute to SamukiPL/convention-example-project development by creating an account on GitHub.\" />\n" +
         "      \n" +
         "    <link rel=\"assets\" href=\"https://github.githubassets.com/\">\n" +

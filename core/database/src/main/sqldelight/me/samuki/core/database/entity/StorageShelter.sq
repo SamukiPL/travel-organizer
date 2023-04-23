@@ -1,17 +1,17 @@
 CREATE TABLE StorageShelter (
-  id TEXT NOT NULL PRIMARY KEY,
-  stageId TEXT NOT NULL,
+  id TEXT AS me.samuki.core.model.Id NOT NULL PRIMARY KEY,
+  stage_id TEXT AS me.samuki.core.model.Id NOT NULL,
   score INTEGER NOT NULL,
   url TEXT NOT NULL,
-  urlName TEXT NOT NULL,
-  urlImage TEXT NOT NULL,
-  FOREIGN KEY (stageId) REFERENCES StorageStage(id) ON DELETE CASCADE
+  url_name TEXT NOT NULL,
+  url_image TEXT NOT NULL,
+  FOREIGN KEY (stage_id) REFERENCES StorageStage(id) ON DELETE CASCADE
 );
 
 selectAllForStage:
 SELECT *
 FROM StorageShelter
-WHERE stageId = :stageId;
+WHERE stage_id = :stageId;
 
 upsertShelter:
 INSERT OR REPLACE INTO StorageShelter

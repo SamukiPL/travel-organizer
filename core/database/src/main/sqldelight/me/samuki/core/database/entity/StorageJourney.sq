@@ -1,7 +1,7 @@
 CREATE TABLE StorageJourney (
-  id TEXT NOT NULL PRIMARY KEY,
+  id TEXT AS me.samuki.core.model.Id NOT NULL PRIMARY KEY,
   name TEXT NOT NULL,
-  lastRevision TEXT AS kotlinx.datetime.LocalDateTime NOT NULL
+  last_revision TEXT AS kotlinx.datetime.LocalDateTime NOT NULL
 );
 
 CREATE INDEX StorageJourney_id ON StorageJourney(id);

@@ -37,8 +37,9 @@ internal class JourneyDetailsViewModel @Inject constructor(
             observeJourneyDetails(journeyId)
                 .onEachResultSuccess {
                     viewState = viewState.copy(
+                        journeyId = journeyId,
                         journeyTitle = it.journey.name,
-                        state = it.stages.getDetailsState()
+                        detailsState = it.stages.getDetailsState()
                     )
                 }
                 .collect()
@@ -51,12 +52,19 @@ internal class JourneyDetailsViewModel @Inject constructor(
         JourneyDetailsState.Content(map(Stage::toItem))
     }
 
+    fun goToAddNewStage() {
+        viewState.journeyId?.let {
+            _viewEvent.sendEvent(ViewEvent.GoToAddNewStage(it))
+        }
+    }
+
     data class ViewState(
+        val journeyId: String? = null,
         val journeyTitle: String? = null,
-        val state: JourneyDetailsState = JourneyDetailsState.Loading
+        val detailsState: JourneyDetailsState = JourneyDetailsState.Loading
     )
 
     sealed interface ViewEvent {
-
+        data class GoToAddNewStage(val journeyId: String) : ViewEvent
     }
 }

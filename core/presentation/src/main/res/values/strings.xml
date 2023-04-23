@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="stage_type_road">Road</string>
+    <string name="stage_type_stay">Stay</string>
+</resources>

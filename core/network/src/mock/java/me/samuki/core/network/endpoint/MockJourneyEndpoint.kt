@@ -2,6 +2,7 @@ package me.samuki.core.network.endpoint
 
 import kotlinx.coroutines.delay
 import kotlinx.datetime.toKotlinLocalDateTime
+import me.samuki.core.data.mapper.toId
 import me.samuki.core.database.JourneyQueries
 import me.samuki.core.database.StageQueries
 import me.samuki.core.network.model.request.ApiJourneyName
@@ -57,22 +58,26 @@ class MockJourneyEndpoint @Inject constructor(
     }
 
     override suspend fun getDetails(journeyId: String): ApiJourney {
+        println("DUPA $journeyId")
+        stageQueries.selectAll().executeAsList().forEach {
+            println("DUPA ${it.name} ${it.journey_id} ${it.id}")
+        }
         delay(Random.nextDouble(3.0, 7.0).seconds)
-        return journeyQueries.selectJourney(journeyId).executeAsOne().let {
+        return journeyQueries.selectJourney(journeyId.toId()).executeAsOne().let {
             ApiJourney(
-                id = it.id,
+                id = it.id.toString(),
                 name = it.name,
-                lastRevision = it.lastRevision,
-                stages = stageQueries.selectAllForJourney(journeyId).executeAsList()
+                lastRevision = it.last_revision,
+                stages = stageQueries.selectAllForJourney(journeyId.toId()).executeAsList()
                     .map { stage ->
                         ApiStage(
-                            id = stage.id,
-                            journeyId = stage.journeyId,
-                            nextStageId = stage.nextStageId,
+                            id = stage.id.toString(),
+                            journeyId = stage.journey_id.toString(),
+                            nextStageId = stage.next_stage_id.toString(),
                             name = stage.name,
                             url = stage.url,
-                            urlName = stage.urlName,
-                            urlImage = stage.urlImage,
+                            urlName = stage.url_name,
+                            urlImage = stage.url_image,
                             type = stage.type
                         )
                     }

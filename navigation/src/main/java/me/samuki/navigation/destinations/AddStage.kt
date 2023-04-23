@@ -21,7 +21,7 @@ internal class AddStage @Inject constructor() : Destination {
 
     @Composable
     override fun BuildDestination(navigation: AppNavigation) {
-        AddStageScreen(addStageNavigation = navigation)
+        AddStageScreen(addStageNavigation = navigation, goBackNavigation = navigation)
     }
 
     companion object {

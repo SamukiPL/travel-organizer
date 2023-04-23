@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -80,4 +81,18 @@ private fun ButtonContent(text: String) {
         style = MaterialTheme.typography.button,
         maxLines = 1
     )
+}
+
+@Preview
+@Composable
+private fun ButtonPreview() {
+    LoadingButton(text = "Add", isLoading = false) {
+    }
+}
+
+@Preview
+@Composable
+private fun LoadingButtonPreview() {
+    LoadingButton(text = "Add", isLoading = true) {
+    }
 }

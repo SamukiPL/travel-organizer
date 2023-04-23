@@ -1,20 +1,24 @@
 CREATE TABLE StorageStage (
-  id TEXT NOT NULL PRIMARY KEY,
-  journeyId TEXT NOT NULL,
-  nextStageId TEXT,
+  id TEXT AS me.samuki.core.model.Id NOT NULL PRIMARY KEY,
+  journey_id TEXT AS me.samuki.core.model.Id NOT NULL,
+  next_stage_id TEXT AS me.samuki.core.model.Id,
   name TEXT NOT NULL,
   url TEXT NOT NULL,
-  urlName TEXT,
-  urlImage TEXT,
+  url_name TEXT,
+  url_image TEXT,
   type TEXT AS me.samuki.core.model.StageType NOT NULL,
-  FOREIGN KEY (journeyId) REFERENCES StorageJourney(id) ON DELETE CASCADE,
-  FOREIGN KEY (nextStageId) REFERENCES StorageStage(id)
+  FOREIGN KEY (journey_id) REFERENCES StorageJourney(id) ON DELETE CASCADE,
+  FOREIGN KEY (next_stage_id) REFERENCES StorageStage(id)
 );
+
+selectAll:
+SELECT *
+FROM StorageStage;
 
 selectAllForJourney:
 SELECT *
 FROM StorageStage
-WHERE journeyId = :journeyId;
+WHERE journey_id = :journeyId;
 
 upsertStage:
 INSERT OR REPLACE INTO StorageStage
@@ -22,4 +26,24 @@ VALUES ?;
 
 deleteStage:
 DELETE FROM StorageStage
+WHERE id = :id;
+
+updateNextStageIdInLastStageOfJourney:
+UPDATE StorageStage
+SET next_stage_id = :nextStageId
+WHERE journey_id = :journeyId AND next_stage_id IS NULL;
+
+updateNextStageIdInPredecessorFromSuccessor:
+UPDATE StorageStage
+SET next_stage_id = (SELECT next_stage_id FROM StorageStage WHERE id = :nextStageId)
+WHERE next_stage_id = :nextStageId;
+
+updateNextStageIdFromSuccessor:
+UPDATE StorageStage
+SET next_stage_id = (SELECT next_stage_id FROM StorageStage WHERE id = :id)
+WHERE id = :nextStageId;
+
+updateSuccessorId:
+UPDATE StorageStage
+SET next_stage_id = :nextStageId
 WHERE id = :id;

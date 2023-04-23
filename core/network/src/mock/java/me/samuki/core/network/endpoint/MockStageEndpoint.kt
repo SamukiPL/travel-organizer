@@ -1,6 +1,7 @@
 package me.samuki.core.network.endpoint
 
 import kotlinx.coroutines.delay
+import me.samuki.core.data.mapper.toId
 import me.samuki.core.database.StageQueries
 import me.samuki.core.database.entity.StorageStage
 import me.samuki.core.network.model.ApiStage
@@ -19,16 +20,16 @@ class MockStageEndpoint @Inject constructor(
             throw MockNetworkException()
         }
 
-        return stageQueries.selectAllForJourney(journeyId = journeyId).executeAsList()
+        return stageQueries.selectAllForJourney(journeyId = journeyId.toId()).executeAsList()
             .map {
                 ApiStage(
-                    id = it.id,
-                    journeyId = it.journeyId,
-                    nextStageId = it.nextStageId,
+                    id = it.id.toString(),
+                    journeyId = it.journey_id.toString(),
+                    nextStageId = it.next_stage_id?.toString(),
                     name = it.name,
                     url = it.url,
-                    urlName = it.urlName,
-                    urlImage = it.urlImage,
+                    urlName = it.url_name,
+                    urlImage = it.url_image,
                     type = it.type
                 )
             }
@@ -37,22 +38,22 @@ class MockStageEndpoint @Inject constructor(
     override suspend fun putStage(apiStage: ApiStage): ApiStage {
         if (apiStage.name == "error") throw MockNetworkException()
 
-        val uuid = UUID.randomUUID().toString()
+        val uuid = UUID.randomUUID().toString().toId()
 
         stageQueries.upsertStage(
             StorageStage(
                 id = uuid,
-                journeyId = apiStage.journeyId,
-                nextStageId = apiStage.nextStageId,
+                journey_id = apiStage.journeyId.toId(),
+                next_stage_id = apiStage.nextStageId?.toId(),
                 name = apiStage.name,
                 url = apiStage.url,
-                urlName = apiStage.urlName,
-                urlImage = apiStage.urlImage,
+                url_name = apiStage.urlName,
+                url_image = apiStage.urlImage,
                 type = apiStage.type
             )
         )
         return apiStage.copy(
-            id = uuid
+            id = uuid.toString()
         )
     }
 

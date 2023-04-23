@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_stage_title">New Stage</string>
+    <string name="add">Add</string>
+    <string name="stage_name_label">Stage Name</string>
+    <string name="stage_type_label">Choose type of your new stage</string>
+    <string name="stage_url_label">Paste link you want to highlight</string>
+    <string name="stage_url_hint">Url</string>
+    <string name="stage_url_placeholder">https://</string>
+    <string name="url_preview_empty">No image was found</string>
+    <string name="url_preview_error">Error occurred while downloading url preview.</string>
+</resources>

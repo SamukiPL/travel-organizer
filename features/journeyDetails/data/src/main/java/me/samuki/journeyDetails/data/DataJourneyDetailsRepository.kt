@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.map
 import me.samuki.core.data.local.LocalJourneyDataSource
 import me.samuki.core.data.local.LocalStageDataSource
 import me.samuki.core.data.mapper.toDomain
+import me.samuki.core.data.mapper.toId
 import me.samuki.core.data.mapper.toStorage
 import me.samuki.core.data.network.NetworkJourneyDataSource
 import me.samuki.core.database.entity.StorageJourney
@@ -40,9 +41,9 @@ class DataJourneyDetailsRepository @Inject constructor(
         }
     }
 
-    private fun getJourneyFlow(journeyId: String) = localJourney.getJourney(journeyId)
+    private fun getJourneyFlow(journeyId: String) = localJourney.getJourney(journeyId.toId())
         .map(StorageJourney::toDomain)
 
-    private fun getStagesFlow(journeyId: String) = localStage.getStagesForJourney(journeyId)
+    private fun getStagesFlow(journeyId: String) = localStage.getStagesForJourney(journeyId.toId())
         .map { it.map(StorageStage::toDomain) }
 }
