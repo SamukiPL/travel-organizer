@@ -8,12 +8,9 @@ android {
 }
 
 dependencies {
-    val kotestVersion = "5.5.4"
-    val mockkVersion = "1.13.3"
+    api(libs.kotest.runner)
+    api(libs.kotest.assertions.core)
+    api(libs.kotest.property)
 
-    api("io.kotest:kotest-runner-junit5:$kotestVersion")
-    api("io.kotest:kotest-assertions-core:$kotestVersion")
-    api("io.kotest:kotest-property:$kotestVersion")
-
-    api("io.mockk:mockk:$mockkVersion")
+    api(libs.mockk)
 }

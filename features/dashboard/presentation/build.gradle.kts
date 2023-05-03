@@ -7,5 +7,5 @@ android {
 }
 
 dependencies {
-    implementation("com.airbnb.android:lottie-compose:5.2.0")
+    implementation(libs.lottie)
 }
