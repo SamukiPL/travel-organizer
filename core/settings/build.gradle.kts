@@ -10,5 +10,5 @@ android {
 dependencies {
     implementation(project(":core:common"))
 
-    implementation("com.russhwolf:multiplatform-settings-no-arg:1.0.0-RC")
+    implementation(libs.settings.no.arg)
 }

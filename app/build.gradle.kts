@@ -34,9 +34,9 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.splashscreen)
 
-    implementation("com.russhwolf:multiplatform-settings:1.0.0-RC")
+    implementation(libs.settings.multiplatform)
 }

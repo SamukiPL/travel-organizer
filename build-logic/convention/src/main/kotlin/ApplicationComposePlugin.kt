@@ -3,9 +3,12 @@ import me.samuki.buildlogic.utils.configureCompose
 import me.samuki.buildlogic.utils.implementation
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.getByType
 
+@Suppress("unused")
 class ApplicationComposePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
@@ -13,8 +16,9 @@ class ApplicationComposePlugin : Plugin<Project> {
                 configureCompose(this)
             }
 
+            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
-                implementation("androidx.activity:activity-compose:1.6.1")
+                implementation(libs.findLibrary("androidx-compose-activity").get())
             }
         }
     }

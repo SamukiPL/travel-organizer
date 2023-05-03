@@ -22,6 +22,6 @@ fun DependencyHandlerScope.testImplementation(dependency: Any) {
     add("testImplementation", dependency)
 }
 
-fun DependencyHandlerScope.kapt(dependency: String) {
+fun DependencyHandlerScope.kapt(dependency: Any) {
     add("kapt", dependency)
 }
