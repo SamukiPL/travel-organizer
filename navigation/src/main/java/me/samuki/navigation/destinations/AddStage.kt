@@ -4,11 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
-import me.samuki.addstage.presentation.AddStageScreen
+import me.samuki.stageadd.presentation.StageAddScreen
 import me.samuki.navigation.AppNavigation
 import javax.inject.Inject
 
-internal class AddStage @Inject constructor() : Destination {
+internal class StageAdd @Inject constructor() : Destination {
     override val routeName: String
         get() = route
     override val arguments: List<NamedNavArgument>
@@ -21,14 +21,14 @@ internal class AddStage @Inject constructor() : Destination {
 
     @Composable
     override fun BuildDestination(navigation: AppNavigation) {
-        AddStageScreen(addStageNavigation = navigation, goBackNavigation = navigation)
+        StageAddScreen(stageAddNavigation = navigation, goBackNavigation = navigation)
     }
 
     companion object {
-        private const val addStage = "addStage"
+        private const val stageAdd = "stageAdd"
         const val idArgument = "id"
-        const val route = "$addStage?$idArgument={$idArgument}"
+        const val route = "$stageAdd?$idArgument={$idArgument}"
 
-        fun createRoute(id: String) = "$addStage?$idArgument=$id"
+        fun createRoute(id: String) = "$stageAdd?$idArgument=$id"
     }
 }

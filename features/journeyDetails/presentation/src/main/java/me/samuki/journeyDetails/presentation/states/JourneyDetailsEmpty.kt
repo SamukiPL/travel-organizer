@@ -17,7 +17,7 @@ import me.samuki.core.ui.AddButton
 import me.samuki.journeyDetails.presentation.R
 
 @Composable
-internal fun JourneyDetailsEmpty(addStage: () -> Unit, modifier: Modifier = Modifier) {
+internal fun JourneyDetailsEmpty(stageAdd: () -> Unit, modifier: Modifier = Modifier) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             stringResource(id = R.string.empty_journey_title),
@@ -33,7 +33,7 @@ internal fun JourneyDetailsEmpty(addStage: () -> Unit, modifier: Modifier = Modi
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
         )
-        AddButton(onClick = addStage)
+        AddButton(onClick = stageAdd)
     }
 }
 

@@ -32,5 +32,5 @@ internal abstract class DestinationModule {
 
     @Binds
     @IntoSet
-    abstract fun addStage(addStage: AddStage): Destination
+    abstract fun stageAdd(stageAdd: StageAdd): Destination
 }

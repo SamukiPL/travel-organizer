@@ -48,7 +48,7 @@ fun JourneyDetailsScreen(
 private fun JourneyDetailsContent(
     title: String?,
     state: JourneyDetailsState,
-    addStage: () -> Unit,
+    stageAdd: () -> Unit,
     goBack: () -> Unit
 ) {
     Column {
@@ -61,7 +61,7 @@ private fun JourneyDetailsContent(
             when (it) {
                 JourneyDetailsState.Loading -> JourneyDetailsLoading()
                 JourneyDetailsState.Empty -> {
-                    JourneyDetailsEmpty(addStage, modifier = Modifier.padding(16.dp))
+                    JourneyDetailsEmpty(stageAdd, modifier = Modifier.padding(16.dp))
                 }
 
                 is JourneyDetailsState.Content -> JourneyDetailsList(it.items)
@@ -77,7 +77,7 @@ private fun JourneyDetailsContentPreview() {
     JourneyDetailsContent(
         "Test",
         JourneyDetailsState.Empty,
-        addStage = { /*TODO*/ }) {
+        stageAdd = { /*TODO*/ }) {
 
     }
 }

@@ -2,7 +2,7 @@ package me.samuki.navigation
 
 import androidx.compose.runtime.Immutable
 import androidx.navigation.NavController
-import me.samuki.addstage.presentation.AddStageNavigation
+import me.samuki.stageadd.presentation.StageAddNavigation
 import me.samuki.core.presentation.navigation.GoBackNavigation
 import me.samuki.dashboard.presentation.DashboardNavigation
 import me.samuki.journeyDetails.presentation.JourneyDetailsNavigation
@@ -16,5 +16,5 @@ class AppNavigation(
     DashboardNavigation by ProvidedDashboardNavigation(navController),
     JourneyNameNavigation by ProvidedJourneyNameNavigation(navController),
     JourneyDetailsNavigation by ProvidedJourneyDetailsNavigation(navController),
-    AddStageNavigation by ProvidedAddStageNavigation(navController),
+    StageAddNavigation by ProvidedStageAddNavigation(navController),
     GoBackNavigation by ProvidedGoBackNavigation(navController)
