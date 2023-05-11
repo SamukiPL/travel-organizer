@@ -38,10 +38,6 @@
             <option value="$PROJECT_DIR$/core/testing" />
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/addStage" />
-            <option value="$PROJECT_DIR$/features/addStage/data" />
-            <option value="$PROJECT_DIR$/features/addStage/domain" />
-            <option value="$PROJECT_DIR$/features/addStage/presentation" />
             <option value="$PROJECT_DIR$/features/dashboard" />
             <option value="$PROJECT_DIR$/features/dashboard/data" />
             <option value="$PROJECT_DIR$/features/dashboard/domain" />
@@ -55,6 +51,10 @@
             <option value="$PROJECT_DIR$/features/journeyName/domain" />
             <option value="$PROJECT_DIR$/features/journeyName/presentation" />
             <option value="$PROJECT_DIR$/features/onboarding" />
+            <option value="$PROJECT_DIR$/features/stageAdd" />
+            <option value="$PROJECT_DIR$/features/stageAdd/data" />
+            <option value="$PROJECT_DIR$/features/stageAdd/domain" />
+            <option value="$PROJECT_DIR$/features/stageAdd/presentation" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>
