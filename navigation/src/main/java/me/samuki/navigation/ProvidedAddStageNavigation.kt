@@ -1,11 +1,11 @@
 package me.samuki.navigation
 
 import androidx.navigation.NavController
-import me.samuki.addstage.presentation.AddStageNavigation
-import me.samuki.navigation.destinations.AddStage
+import me.samuki.stageadd.presentation.StageAddNavigation
+import me.samuki.navigation.destinations.StageAdd
 import me.samuki.navigation.ext.getString
 
-class ProvidedAddStageNavigation(private val navController: NavController) : AddStageNavigation {
+class ProvidedStageAddNavigation(private val navController: NavController) : StageAddNavigation {
     override fun getJourneyIdArgument(): String =
-        requireNotNull(navController.getString(AddStage.idArgument) ?: "TODO")
+        requireNotNull(navController.getString(StageAdd.idArgument) ?: "TODO")
 }
